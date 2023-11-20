@@ -1,7 +1,7 @@
 
 
 .card{
-  top : 100%;
+  top : 900px;
   right : 25%;
   position : relative ;
   z-index : 2 ;
@@ -195,7 +195,7 @@
   position : absolute ;
   width : 100% ;
   left : 0%;
-  height : 800px ;
+  height : 300px ;
   display : flex ;
   flex-direction : column ;
   justify-content : flex-start ;

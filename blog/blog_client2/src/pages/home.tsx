@@ -80,7 +80,7 @@ export default function Home({ posts }: Props) {
             <p>{post.content}</p>
             
             <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Link href={`/edit-post/${post.id}`}><PopButton><i className="fas fa-pencil-alt"></i></PopButton>
+            <Link href={`/edit-post/${post.id}`}><PopButton />
             </Link>
             
             <button onClick={(e) => {e.stopPropagation() 
