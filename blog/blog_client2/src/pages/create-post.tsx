@@ -7,32 +7,41 @@ import { useRouter } from 'next/router';
 const CreatePost = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [image, setImage] = useState<File | null>(null);
     const router = useRouter();
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        try {
-            await axios.post("http://localhost:3001/api/v1/posts", {
-                post: {
-                    title: title,
-                    content: content,
-                }
-        });
+        const formData = new FormData();
+        formData.append('post[title]', title);
+        formData.append('post[content]', content);
+        if (image) {
+            formData.append('post[image]', image);
+        }
 
-        router.push("/");
-        // ユーザーに成功を通知
-            setTitle("");  // タイトルをクリア
-            setContent("");  // コンテンツをクリア
+        try {
+            await axios.post("http://localhost:3001/api/v1/posts", formData);
+
+            router.push("/");
+            setTitle("");
+            setContent("");
+            setImage(null);
         } catch (err) {
-            console.error(err);  // エラーの詳細をコンソールに出力
+            console.error(err);
             alert("投稿に失敗しました");
+        }
+    };
+
+    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setImage(e.target.files[0]);
         }
     };
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>ブログ新規登録</h1>
+            <h1 className={styles.title}>AI絵登録</h1>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label className={styles.label}>タイトル</label>
                 <input 
@@ -46,6 +55,12 @@ const CreatePost = () => {
                     className={styles.textarea} 
                     value={content}  // value を設定
                     onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)} 
+                />
+                <label className={styles.label}>画像</label>
+                <input 
+                    type="file" 
+                    className={styles.input} 
+                    onChange={handleImageChange} 
                 />
                 <button type="submit" className={styles.button}>投稿</button>
             </form>

@@ -15,6 +15,7 @@
   .label {
     margin-bottom: 5px;
     font-weight: bold;
+    color: white;
   }
   
   .input,
@@ -42,7 +43,7 @@
   .title {
     text-align: center;
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 20px;
   }
   

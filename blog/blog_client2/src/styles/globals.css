@@ -21,6 +21,7 @@ body {
   }
 
   .top_text {
+    animation: fadeIn 2s ease-in-out;
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
@@ -35,12 +36,16 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;  
-    background: linear-gradient(to right, #6200ff, #e214a4);
+    background: linear-gradient(to right, #878282, #000000);
 
   /* グラデーションの文字にぼかしをかける */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
+  }
+  @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 
   }
   .gotoHome {
