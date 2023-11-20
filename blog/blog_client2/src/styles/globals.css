@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
     margin: 100px;
     padding: 0;
@@ -17,4 +18,18 @@ body {
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+  }
+
+  .top_text {
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+    letter-spacing: 0.1em; 
+    text-transform: uppercase;
+    color: black;
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;  
   }

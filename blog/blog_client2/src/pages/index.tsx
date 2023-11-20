@@ -1,16 +1,20 @@
 import Link from 'next/link';
 import Header from '../components/Header';
 import Main from '../components/Main';
+import { Fade } from 'react-awesome-reveal';
 
 export default function Top() {
   return (
     <div>
       <Header />
       <Main />
-      <h1>Welcome to the Top Page!</h1>
+      <Fade>
+      <h1 className="top_text">AIで、想像を</h1>
+      </Fade>
       <Link href="/home">
         <div>Go to Home</div>
       </Link>
+     
       
     </div>
   );
