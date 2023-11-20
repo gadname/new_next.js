@@ -21,15 +21,28 @@ body {
   }
 
   .top_text {
-    font-family: 'Roboto', sans-serif;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
-    letter-spacing: 0.1em; 
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    letter-spacing: 0.2em;
+    line-height: 1.5; 
     text-transform: uppercase;
+    transform: translate(-50%, -50%) rotate(-5deg); 
     color: black;
-    font-size: 100px;
+    font-size: 80px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;  
+    background: linear-gradient(to right, #6200ff, #e214a4);
+
+  /* グラデーションの文字にぼかしをかける */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+
+  }
+  .gotoHome {
+
   }
