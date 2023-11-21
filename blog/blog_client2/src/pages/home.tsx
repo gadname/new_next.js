@@ -20,6 +20,7 @@ type Post = {
   id: number;
   title: string;
   content: string;
+  image: string;
 };  // Post 型を定義
 
 type Props = {
@@ -72,24 +73,25 @@ export default function Home({ posts }: Props) {
 
 
         
-        {posts.map((post) => (
-          <div key={post.id} className={styles.postCard} >  {/* className をコメントアウトまたは適切なスタイルに変更 */}
-            <Link href={`/posts/${post.id}`}>
-                <h2>{post.title}</h2>
-            </Link>
-            <p>{post.content}</p>
-            
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Link href={`/edit-post/${post.id}`}><PopButton />
-            </Link>
-            
-            <button onClick={(e) => {e.stopPropagation() 
-            handleDelete(post.id)
-            }}><DeleteButton>Delete</DeleteButton></button> {/* className をコメントアウトまたは適切なスタイルに変更 */}
-          
-          </div>
-          </div>
-        ))}
+        {posts.map((post) => {
+  console.log(post.image_url);
+  return (
+    <div key={post.id} className={styles.postCard}>
+      <Link href={`/posts/${post.id}`}>
+        <h2>{post.title}</h2>
+      </Link>
+      <p>{post.content}</p>
+      <img src={post.image.url} alt="image" className="card-img-top" width="600" height="200"/>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Link href={`/edit-post/${post.id}`}><PopButton /></Link>
+        <button onClick={(e) => {
+          e.stopPropagation();
+          handleDelete(post.id);
+        }}><DeleteButton>Delete</DeleteButton></button>
+      </div>
+    </div>
+  );
+})}
 
         <div style={{display: 'flex', justifyContent: 'center'}}>
         <Link href="/create-post">

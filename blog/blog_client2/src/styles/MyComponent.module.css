@@ -50,12 +50,15 @@
   /* Home.module.css */
   
   .homeContainer {
+    
     max-width: 40%;
     margin: 0 auto;
     padding: 100px;
   }
   
   .postCard {
+    color :#007bff;
+    background-color :#ffffff;
     flex: 1 0 50%;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -73,7 +76,7 @@
   
   .postCardBox {
     text-decoration: none;
-    color: #2f3294;
+    color: #858585;
   }
   
   .createButton {

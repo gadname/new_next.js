@@ -60,7 +60,11 @@ const CreatePost = () => {
                 <input 
                     type="file" 
                     className={styles.input} 
-                    onChange={handleImageChange} 
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        if (e.target.files) {
+                            setImage(e.target.files[0]);
+                        }
+                    }} 
                 />
                 <button type="submit" className={styles.button}>投稿</button>
             </form>
