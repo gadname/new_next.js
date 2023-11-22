@@ -1,0 +1,41 @@
+{
+  "name": "blog_client2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "build-css": "tailwindcss build -i ./src/styles.css -o ./public/styles.css --watch"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mui/icons-material": "^5.14.14",
+    "add": "^2.0.6",
+    "axios": "^1.5.1",
+    "cors": "^2.8.5",
+    "firebase": "^10.6.0",
+    "next": "13.5.5",
+    "next-auth": "^4.24.5",
+    "or": "^0.2.0",
+    "react": "^18",
+    "react-awesome-reveal": "^4.2.7",
+    "react-dom": "^18",
+    "react-typewriter-hook": "^1.0.2",
+    "yarn": "^1.22.21"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.5",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5"
+  }
+}
