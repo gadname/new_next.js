@@ -15,12 +15,12 @@ export default function Header() {
         <div className={styles.touch + " " + styles.touch__9}></div>
         <div className={styles.main}>
           <div className={styles.icon}>
-            <img className={styles.img} src="https://pbs.twimg.com/profile_images/1568001848795353088/6IicRRIF_400x400.jpg" alt="" />
+            <img className={styles.img} src="ai9.jpg" alt="" />
           </div>
           <span className={styles.name}>AI 個展</span>
-          <span className={styles.account}>725 Follow / 15,210 Followers</span>
-          <span className={styles.link + " " + styles.text}>@ash_creator</span>
-          <span className={styles.comment + " " + styles.text}>仕事が好きです。<br />CSSが好きです。<br />クリエイティブが大好きです。</span>
+          <span className={styles.account}>OpenAI App / DALL-E3</span>
+          <span className={styles.link + " " + styles.text}>Title</span>
+          <span className={styles.comment + " " + styles.text}>「AI個展」はAIイラスト専用の画像投稿サービスです。<br /><br /></span>
         </div>
       </div>
 

@@ -5,21 +5,25 @@
     margin: 0 auto;
     padding: 20px;
     background-color: #ffffff;
+    top : 40%;
   }
   
   .form {
+    position : relative;
+    top : 60px;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
   }
   
   .label {
+    
     margin-bottom: 5px;
     font-weight: bold;
-    color: white;
+    color: rgb(0, 0, 0);
   }
   
-  .input,
+  .input ,
   .textarea {
     padding: 10px;
     margin-bottom: 20px;
@@ -44,8 +48,15 @@
   .title {
     text-align: center;
     font-size: 24px;
-    color: #ffffff;
+    color: #000000;
     margin-bottom: 20px;
+  }
+
+  .previewImage {
+    width: 400px;
+    height: 400px;
+    object-fit: cover; /* 画像を正方形にクロップ */
+    margin-right: auto; /* 右端に寄せる */
   }
   
   /* Home.module.css */

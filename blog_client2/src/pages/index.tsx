@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import Main from '../components/Main';
 import Link from 'next/link';
 
+
 export default function Home() {
   let typewriterText = "AIで、創る。";
   const { data: session, status } = useSession()
@@ -17,6 +18,7 @@ export default function Home() {
      <div>
       <Header />
       <h1 className="top_text">{typewriterText}</h1>
+      <h2 className="top_text2">{typewriterText}</h2>
       <Main />
 
       

@@ -21,6 +21,9 @@ type Post = {
   title: string;
   content: string;
   image: string;
+  user_id: number;
+  post_id: number;
+  
 };  // Post 型を定義
 
 type Props = {
@@ -41,7 +44,7 @@ export async function getStaticProps() { //Props = ページごとに異なるPr
 
 // const inter = Inter({ subsets: ['latin'] });  // もし不要であればコメントアウト
 
-export default function Home({ posts }: Props) {
+export default function Home({ posts }) {
   const router = useRouter();
 
   const handleDelete = async (postId: number) => {
@@ -50,11 +53,12 @@ export default function Home({ posts }: Props) {
 
       router.reload();
     } catch (err) {
-      console.error(err);
+      
       alert("削除に失敗しました");
     }
 
   }
+  
 
   return (
     <>
@@ -70,9 +74,11 @@ export default function Home({ posts }: Props) {
       <div className={styles.postsContainer}>
         {posts.map((post) => (
           <div className={styles.postCard}>
-            <Postcard post={post} handleDelete={handleDelete} />
+            <Postcard key={post.id} post={post} handleDelete={() => handleDelete(post.id)} handleBookmark={() => handleBookmark(post.id)} />
           </div>
+          
         ))}
+        
       </div>
     </>
   );

@@ -11,10 +11,18 @@ const Login = () => {
   if (status !== 'authenticated') {
     return (
       <div>
-        <p>あなたはログインしていません</p>
-        <button onClick={() => signIn('google', null, { prompt: 'login' })}>
-          Googleでログイン
-        </button>
+        <img src="Google.logo.png" 
+        style={{ 
+          width: '50px', 
+          height: '50px', 
+          borderRadius: '50%',
+          position: 'absolute',
+          top: '20px',
+          left: '50%',
+          
+      }}  
+        onClick={() => signIn('google', null, { prompt: 'login' })} 
+        />
       </div>
     )
   }

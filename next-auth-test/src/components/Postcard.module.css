@@ -34,7 +34,7 @@
     transition : all ease .7s ;
     color : #fff ;
     box-shadow : 2px 2px 3px rgba(255,255,255,.2) inset ;
-   
+  
     /* 他のスタイル... */
   }
   .touch{
@@ -235,8 +235,8 @@
     background-size: cover;
     background-position: center;
     z-index : 0;
-    /* animation-duration : 12s ;*/
-    /* animation-direction : alternate ;*/
+    animation-duration : 12s ;
+    animation-direction : alternate ;
     border-radius: 50%;
   }
   .circleText{
@@ -268,6 +268,7 @@
     animation-duration : 25s ;
     animation-direction : alternate-reverse ;
   }
+  
   .circle_3{
     top : 240px ;
     left : 200px ;
@@ -344,5 +345,24 @@
     to {
       transform: translateY(0);
     }
+    
   }
   
+  .editButton {
+    position: absolute;
+    left: 50%;
+  }
+  .deleteButton{
+    position: absolute;
+    top: 70%;
+    right: 100px;
+  }
+  .starButtonClicked {
+    animation: scaleAnimation 0.2s ease-in-out;
+  }
+  
+  @keyframes scaleAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
