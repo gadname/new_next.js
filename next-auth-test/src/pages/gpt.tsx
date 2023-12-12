@@ -1,30 +1,30 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
-  const [effects, setEffects] = useState([]);
+const Timer = () => {
+  const [seconds, setSeconds] = useState(0);
+  const [isActive, setIsActive] = useState(false);
 
-  const addEffect = () => {
-    setCount(count + 1);
-    setEffects([...effects, `Effect ${count + 1}`]);
-  };
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isActive) {
+      interval = setInterval(() => {
+        setSeconds(seconds => seconds + 1);
+      }, 1000);
+    } else {
+      setSeconds(0);
+    }
+    return () => clearInterval(interval);
+  }, [isActive]);
 
   return (
     <div>
-      <p>Count: {count}</p>
-      {effects.map((effect, index) => (
-        <p key={index}>{effect}</p>
-      ))}
-      <button onClick={addEffect}>
-        Increment and add effect
-      </button>
-      <button onClick={() => setCount(count - 1)}>
-        Decrement
+      <p>Elapsed time: {seconds} seconds</p>
+      <button onClick={() => setIsActive(!isActive)}>
+        {isActive ? 'Reset' : 'Start'}
       </button>
     </div>
   );
 };
 
-
-export default Counter;
+export default Timer;

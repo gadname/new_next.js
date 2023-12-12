@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, KeyboardEvent } from 'react'
+import { useState, useRef, KeyboardEvent, useEffect, ChangeEvent } from 'react'
 import { OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 
@@ -19,75 +19,37 @@ type Post = {
   post_id: number;
 };
 
-type GalleryProps = ({ posts }: GalleryProps) => {
+type GalleryProps = {
   posts: Post[];
 };
 
-const Gallery = () => {
-  const [image, setImage] = useState('./art2.png')
+const Gallery: React.FC<GalleryProps> = ({ posts }) => {
+  const [image, setImage] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
-  const [posts, setPosts] = useState([])
   const inputRef = useRef<HTMLInputElement>(null)
+  const fileRef = useRef<HTMLInputElement>(null)
 
   // 絵画リスト
-  const images = [
-    {
-      id: '1',
-      position: [-1.7, 0.5, 0.05],
-      image: './art1.png',
-    },
-    {
-      id: '2',
-      position: [0, 0.5, 0.05],
-      image: image, // AIで画像を生成する
-    },
-    {
-      id: '3',
-      position: [1.7, 0.5, 0.05],
-      image: './art3.png',
-    },
-  ]
+  const images = posts ? posts.map(post => ({
+    id: post.id.toString(),
+    position: [-1.7, 0.5, 0.05],
+    image: post.image,
+  })) : [];
 
-  // テキスト入力
-  const handleKeyPress = async (e: KeyboardEvent<HTMLInputElement>) => {
-    // エンターキーが押されたら
-    if (e.key === 'Enter') {
-      e.preventDefault()
-      setLoading(true)
-
-      const inputValue = inputRef.current?.value
-
-      // 入力チェック
-      if (!inputValue) {
-        setLoading(false)
-        return
-      }
-
-      try {
-        // DALLE APIコール
-        const response = await fetch('/api/dalle', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            prompt: inputValue,
-          }),
+  // 画像投稿
+  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64 = reader.result as string;
+        setImage(base64);
+        images.push({
+          id: (images.length + 1).toString(),
+          position: [-1.7, 0.5, 0.05],
+          image: base64,
         })
-
-        const data = await response.json()
-        // 画像をセット
-        setImage(`data:image/png;base64,${data.photo}`)
-      } catch (error) {
-        alert(error)
       }
-
-      // 入力フォームクリア
-      if (inputRef.current) {
-        inputRef.current.value = ''
-      }
-
-      setLoading(false)
+      reader.readAsDataURL(e.target.files[0]);
     }
   }
 
@@ -96,7 +58,7 @@ const Gallery = () => {
      
 
       {/* 背景 */}
-      <color args={['#ADD8E6']} attach="background" />
+      <color attach="background" args={['#ADD8E6']} />
 
       {/* 環境光 */}
       <ambientLight intensity={0.5} />
@@ -110,8 +72,7 @@ const Gallery = () => {
         <Pole />
         {/* フレーム */}
         <FrameList images={images} />
-        {/* 入力フォーム */}
-        <InputText handleKeyPress={handleKeyPress} inputRef={inputRef} loading={loading} />
+        {/* 画像投稿フォーム */}
       </group>
     </>
   )
