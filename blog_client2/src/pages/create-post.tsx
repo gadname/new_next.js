@@ -19,6 +19,7 @@ const CreatePost = () => {
         if (image) {
             formData.append('post[image]', image);
         }
+        
 
         try {
             await axios.post("http://localhost:3001/api/v1/posts", formData);
@@ -41,7 +42,7 @@ const CreatePost = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>AI絵登録</h1>
+            <h1 className={styles.title}>AIイラスト登録</h1>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label className={styles.label}>タイトル</label>
                 <input 

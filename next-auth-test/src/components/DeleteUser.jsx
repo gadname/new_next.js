@@ -22,14 +22,14 @@ const DeleteUser = () => {
         console.error('アカウント削除に失敗しました')
       }
     } catch (error) {
-      console.log('エラーだよ全員集合！', error)
+      console.log('エラーです', error)
     }
   }
 
   if (session) {
     return (
       <div>
-        <button onClick={() => handleDeleteUser()}>アカウントを削除する</button>
+        <button onClick={() => handleDeleteUser()}>アカウント削除</button>
       </div>
     )
   }

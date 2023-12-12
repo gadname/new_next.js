@@ -1,4 +1,4 @@
-import { Post } from "@/types";
+import { Post } from "../types";
 import React from 'react';
 import { useRouter } from 'next/router';
 import styles from "../../styles/Post.module.css"
@@ -41,7 +41,7 @@ const Post = ({ post }: props) => {
   return (
     <div>
         <div className={styles.title}>{post.title}</div>
-        <img src={post.image.url} alt={post.title} />
+        <img src={post.image.url} alt={post.title} className="image" />
         <p className={styles.content}>{post.content}</p>
     </div>
   )

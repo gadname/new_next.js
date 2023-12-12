@@ -13,10 +13,12 @@ export default NextAuth({
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
+      console.log(account);  // ここでaccountオブジェクトをログに出力
       const provider = account.provider
-      const uid = account.sub
+      const uid = account.providerAccountId
       const name = user.name
       const email = user.email
+      const user_id = account.user_id;
 
       try {
         const response = await axios.post(`${apiUrl}/auth/${provider}/callback`, {
@@ -24,6 +26,7 @@ export default NextAuth({
           uid,
           name,
           email,
+          user_id,
         })
 
         if (response.status === 200) {

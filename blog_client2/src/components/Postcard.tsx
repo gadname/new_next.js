@@ -25,6 +25,7 @@ export default function Postcard({ post, handleDelete }) {
         <span className={styles.account}>725 Follow / 15,210 Followers</span>
         <span className={styles.link + " " + styles.text}>@ash_creator</span>
         <span className={styles.comment + " " + styles.text}>{post.content}</span>
+        
         <Link href={`/edit-post/${post.id}`}>
           <div className={styles.editButton}>Edit</div>
         </Link>
@@ -32,7 +33,6 @@ export default function Postcard({ post, handleDelete }) {
           e.stopPropagation();
           handleDelete(post.id);
         }}>Delete</button>
-        
       </div>
       
     </div>

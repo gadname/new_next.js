@@ -7,7 +7,7 @@ const Logout = () => {
   if (status === 'authenticated') {
     return (
       <div>
-        <button onClick={() => signOut()}>ログアウト</button>
+        <button onClick={() => signOut()}>Logout</button>
       </div>
     )
   }
