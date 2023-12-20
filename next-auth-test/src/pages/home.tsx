@@ -1,13 +1,7 @@
 import Head from 'next/head';  
-import Link from 'next/link';  
 import styles from '../styles/MyComponent.module.css';  // CSS モジュールをインポート
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import RetroButton from '../components/RetroButton';
-import PopButton from '../components/PopButton';
-import DeleteButton from '../components/DeleteButton';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 
 import Postcard from '../components/Postcard';
 

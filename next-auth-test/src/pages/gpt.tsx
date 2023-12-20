@@ -1,30 +1,38 @@
-
 import React, { useState, useEffect } from 'react';
 
-const Timer = () => {
+const PomodoroTimer = () => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
+  function reset() {
+    setSeconds(0);
+    setIsActive(false);
+  }
+
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isActive) {
+    let interval: NodeJS.Timer
+    if (isActive && seconds < 1500) {
       interval = setInterval(() => {
         setSeconds(seconds => seconds + 1);
       }, 1000);
+    } else if (!isActive && seconds !== 0) {
+      clearInterval(interval);
     } else {
-      setSeconds(0);
+      clearInterval(interval);
+      alert('Time for a break!');
     }
     return () => clearInterval(interval);
-  }, [isActive]);
+  }, [isActive, seconds]);
 
   return (
     <div>
-      <p>Elapsed time: {seconds} seconds</p>
+      <div>Seconds: {seconds}</div>
       <button onClick={() => setIsActive(!isActive)}>
-        {isActive ? 'Reset' : 'Start'}
+        {isActive ? 'Pause' : 'Start'}
       </button>
+      <button onClick={reset}>Reset</button>
     </div>
   );
 };
 
-export default Timer;
+export default PomodoroTimer;
